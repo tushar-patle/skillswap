@@ -1,5 +1,6 @@
 package com.tushar.skillswap.leaderboard.repository;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,12 +13,16 @@ import com.tushar.skillswap.leaderboard.entity.SkillScoreEntity;
 public interface SkillScoreRepository extends JpaRepository<SkillScoreEntity, Long> {
 
 	Optional<SkillScoreEntity> findByUserIdAndSkillId(Long userId, Long skillId);
-	
+
 	@Query("""
-			SELECT s
-			FROM SkillScoreEntity s
-			WHERE s.skillId = :skillId
-			ORDER BY s.points DESC
-			""")
-	List<SkillScoreEntity> findTopBySkill(@Param("skillId") Long skillId);
+    SELECT s
+    FROM SkillScoreEntity s
+    WHERE s.skillId = :skillId
+    ORDER BY s.points DESC
+""")
+	List<SkillScoreEntity> findLeaderboardBySkill(
+			@Param("skillId") Long skillId,
+			Pageable pageable
+	);
+
 }

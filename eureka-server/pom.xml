@@ -7,27 +7,20 @@
         <artifactId>skillswap</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>skillswap-common</artifactId>
+    <artifactId>eureka-server</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>2.2.15</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 </project>

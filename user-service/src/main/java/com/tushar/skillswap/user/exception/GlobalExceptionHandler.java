@@ -1,12 +1,12 @@
-package com.tushar.skillswap.common.exception;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+package com.tushar.skillswap.user.exception;
 
 import com.tushar.skillswap.common.dto.ErrorResponse;
+import com.tushar.skillswap.common.exception.BusinessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -28,7 +28,9 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleUnhandled(Exception ex) {
 
+		ex.printStackTrace();
+
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-				.body(new ErrorResponse("INTERNAL_ERROR", "Something went wrong"));
+				.body(new ErrorResponse("INTERNAL_ERROR",ex.getClass().getSimpleName() + ": " + ex.getMessage()));
 	}
 }

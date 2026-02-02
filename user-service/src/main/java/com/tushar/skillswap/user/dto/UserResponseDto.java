@@ -3,10 +3,12 @@ package com.tushar.skillswap.user.dto;
 import com.tushar.skillswap.common.enums.UserStatus;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Schema(description = "User details response")
+@AllArgsConstructor
 public class UserResponseDto {
 
 	@Schema(example = "1")
